@@ -7,7 +7,8 @@ services:
     ports:
       - 80:80
     volumes:
-      - C:\Users\matthew\Docker\webdev\www:/var/www/
+      - ./www:/var/www/
+      - ./hosts:/etc/apache2/sites-enabled
     links:
       - db
     networks:
@@ -23,8 +24,8 @@ services:
       MYSQL_PASSWORD: admin
       MYSQL_ROOT_PASSWORD: admin
     volumes:
-      - C:\Users\matthew\Docker\webdev\www\dump:/docker-entrypoint-initdb.d
-      - C:\Users\matthew\Docker\webdev\www\conf:/etc/mysql/conf.d
+      - ./dump:/docker-entrypoint-initdb.d
+      - ./conf:/etc/mysql/conf.d
       - persistent:/var/lib/mysql
     networks:
       - default
